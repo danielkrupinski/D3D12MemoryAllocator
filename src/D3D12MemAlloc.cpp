@@ -4517,8 +4517,7 @@ AllocatorPimpl::AllocatorPimpl(const ALLOCATION_CALLBACKS& allocationCallbacks, 
     m_PreferredBlockSize(desc.PreferredBlockSize != 0 ? desc.PreferredBlockSize : D3D12MA_DEFAULT_BLOCK_SIZE),
     m_AllocationCallbacks(allocationCallbacks),
     m_CurrentFrameIndex(0),
-    // Below this line don't use allocationCallbacks but m_AllocationCallbacks!!!
-    m_AllocationObjectAllocator(m_AllocationCallbacks)
+    m_AllocationObjectAllocator(allocationCallbacks)
 {
     // desc.pAllocationCallbacks intentionally ignored here, preprocessed by CreateAllocator.
     ZeroMemory(&m_D3D12Options, sizeof(m_D3D12Options));
